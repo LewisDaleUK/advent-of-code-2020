@@ -11,23 +11,23 @@ describe('Report', () => {
             1456,
         ];
         const result = report(expenses);
-        expect(result).toBe(514579);
+        expect(result).toBe(241861950);
     });
 
     test('Returns the correct output if two inputs add up to 2020', () => {
         const expenses = [
             1510,
-            979,
-            366,
+            100,
+            120,
             510,
-            675,
+            1800,
             1456,
         ];
         const result = report(expenses);
-        expect(result).toBe(770100);
+        expect(result).toBe(21600000);
     });
 
-    test('Returns 0 if no two inputs add up to 2020', () => {
+    test('Returns 0 if no three inputs add up to 2020', () => {
         const expenses = [
             200,
             800,
