@@ -2,10 +2,9 @@ export const passwords = (items : Array<string>) : number =>
     items.reduce((accumulator : number, item) => {
         const [policy, password] = item.split(': ');
         const [counts, letter] = policy.split(' ');
-        const [min, max] = counts.split('-');
-        const occurrences = countOccurrences(password, letter);
+        const [a, b] = counts.split('-').map(x => parseInt(x) - 1);
 
-        if (occurrences <= parseInt(max) && occurrences >= parseInt(min)) {
+        if ((password[a] === letter && password[b] !== letter) || (password[b] === letter && password[a] !== letter)) {
             return accumulator + 1;
         }
         return accumulator;

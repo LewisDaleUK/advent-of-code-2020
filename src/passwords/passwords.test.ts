@@ -7,6 +7,6 @@ describe('Password validation', () => {
           '1-3 b: cdefg',
           '2-9 c: ccccccccc',
       ];
-      expect(passwords(input)).toEqual(2);
+      expect(passwords(input)).toEqual(1);
    });
 });
