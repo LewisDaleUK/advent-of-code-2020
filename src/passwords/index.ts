@@ -1,0 +1,1 @@
+export { passwords } from './passwords';
