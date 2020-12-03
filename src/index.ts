@@ -20,4 +20,15 @@ console.log(validPasswords);
 
 const terrain = readToArray('./inputs/day-three.txt')
     .map(line => line.split(''));
-console.log(toboggan(terrain));
+
+const slopes = [
+  [1,1],
+  [3,1],
+  [5,1],
+  [7,1],
+  [1,2],
+];
+
+const total = slopes.map(slope => toboggan(terrain, slope))
+    .reduce((acc, val) => acc * val, 1);
+console.log(total);

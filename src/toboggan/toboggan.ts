@@ -1,6 +1,5 @@
-export const toboggan = (lines : Array<Array<string>>) : number => {
-    const right = 3;
-    const down = 1;
+export const toboggan = (lines : Array<Array<string>>, slope : Array<number>) : number => {
+    const [right, down] = slope;
 
     let x = 0;
     let y = 0;
