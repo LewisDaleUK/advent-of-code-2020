@@ -9,19 +9,13 @@ const readToArray = (fn : string) : Array<string> =>
         .toString('utf-8')
         .split('\n');
 
-const expenses = fs.readFileSync('./inputs/day-one.txt')
-    .toString('utf-8')
-    .split('\n')
+const expenses = readToArray('./inputs/day-one.txt')
     .map(str => parseInt(str));
 
 const reportOutput = report(expenses);
 console.log(reportOutput);
 
-const validPasswords = passwords(
-    fs.readFileSync('./inputs/day-two.txt')
-        .toString('utf-8')
-        .split('\n')
-    );
+const validPasswords = passwords(readToArray('./inputs/day-two.txt'));
 console.log(validPasswords);
 
 const terrain = readToArray('./inputs/day-three.txt')
