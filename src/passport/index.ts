@@ -1,0 +1,1 @@
+export {validatePassports} from "./passport";

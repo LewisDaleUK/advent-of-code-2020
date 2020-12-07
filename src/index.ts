@@ -1,5 +1,6 @@
 import fs from 'fs';
 
+import { validatePassports } from "./passport";
 import { passwords } from "./passwords";
 import { report } from './report';
 import { toboggan } from "./toboggan";
@@ -32,3 +33,19 @@ const slopes = [
 const total = slopes.map(slope => toboggan(terrain, slope))
     .reduce((acc, val) => acc * val, 1);
 console.log(total);
+
+const validPassports = validatePassports(
+    readToArray('./inputs/day-four.txt'),
+    [
+      ['byr', true],
+      ['iyr', true],
+      ['eyr', true],
+      ['hgt', true],
+      ['hcl', true],
+      ['ecl', true],
+      ['pid', true],
+      ['cid', false],
+    ]
+);
+
+console.log(validPassports)
