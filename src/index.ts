@@ -1,6 +1,7 @@
 import fs from 'fs';
 
 import { boardingPasses, findMissing } from "./boarding-passes";
+import * as customs from './customs';
 import { validatePassports } from "./passport";
 import { passwords } from "./passwords";
 import { report } from './report';
@@ -56,5 +57,6 @@ const seatIds = seats.map(([column, row, id]) => id);
 console.log(Math.max(...seatIds));
 console.log(findMissing(seats));
 
+console.log(customs.totalAnswers(readToArray('./inputs/day-six.txt')))
 
 
