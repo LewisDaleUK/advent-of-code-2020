@@ -1,6 +1,6 @@
-import {FieldSet, validatePassports} from './passport';
+import {validatePassports} from './passport';
 
-const fields : FieldSet = [
+const fields : Passport.FieldSet = [
     ['byr', true, /^(19\d{2}|200[0-2])$/],
     ['iyr', true, /^20(1[0-9]|20)$/],
     ['eyr', true, /^20(2[0-9]|30)$/],
