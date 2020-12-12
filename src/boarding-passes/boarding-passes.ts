@@ -18,11 +18,8 @@ const binarySearch = (input : string, min = 0, max = 127) : number => {
 const segment = (character : string, min : number, max : number) : [number, number] => {
     if (character === "F" || character === "L") {
         return [min, min + Math.floor((max-min) / 2)];
-    } else if (character === "B" || character === "R") {
-        return [min + Math.ceil((max-min) / 2), max];
-    } else {
-        return [min, max];
     }
+    return [min + Math.ceil((max-min) / 2), max];
 }
 
 const getSeatIds = (seats : Seat[]) : number[] => seats.map(s => s[2]);
