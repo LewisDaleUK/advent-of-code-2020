@@ -18,6 +18,6 @@ describe('Customs', () => {
         
         b`.split('\n').map(s => s.trim());
       const result = Customs.totalAnswers(input);
-      expect(result).toEqual(11);
+      expect(result).toEqual(6);
    });
 });
