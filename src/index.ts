@@ -37,14 +37,14 @@ console.log(total);
 const validPassports = validatePassports(
     readToArray('./inputs/day-four.txt'),
     [
-      ['byr', true],
-      ['iyr', true],
-      ['eyr', true],
-      ['hgt', true],
-      ['hcl', true],
-      ['ecl', true],
-      ['pid', true],
-      ['cid', false],
+        ['byr', true, /^(19\d{2}|200[0-2])$/],
+        ['iyr', true, /^20(1[0-9]|20)$/],
+        ['eyr', true, /^20(2[0-9]|30)$/],
+        ['hgt', true, /^(1([5-8][0-9]|9[0-3])cm|(59|6[0-9]|7[0-6])in)$/],
+        ['hcl', true, /^#[0-9a-f]{6}$/],
+        ['ecl', true, /^(amb|blu|brn|gry|grn|hzl|oth)$/],
+        ['pid', true, /^\d{9}$/],
+        ['cid', false],
     ]
 );
 
