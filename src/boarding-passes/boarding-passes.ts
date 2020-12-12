@@ -1,4 +1,6 @@
-export const boardingPasses = (input : string) : [number, number, number] => {
+type Seat = [number, number, number]
+
+export const boardingPasses = (input : string) : Seat => {
     const row = binarySearch(input.substring(0, 7), 0, 127);
     const column = binarySearch(input.substring(7), 0, 7);
     return [row, column, (row * 8) + column];
@@ -21,4 +23,25 @@ const segment = (character : string, min : number, max : number) : [number, numb
     } else {
         return [min, max];
     }
+}
+
+const getSeatIds = (seats : Seat[]) : number[] => seats.map(s => s[2]);
+const findSeat = (seats : Seat[], id : number) : Seat|void => seats.filter(s => s[2] === id)[0];
+
+export const findMissing = (seats : Seat[]) : number => {
+    const seatIds = getSeatIds(seats);
+
+    for (let i = Math.min(...seatIds); i < Math.max(...seatIds); i++) {
+        const seat = findSeat(seats, i);
+
+        if (!seat) {
+            const above = findSeat(seats, i+1);
+            const below = findSeat(seats, i-1);
+
+            if (above && below) {
+                return i;
+            }
+        }
+    }
+    return 0;
 }

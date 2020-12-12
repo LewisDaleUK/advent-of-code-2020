@@ -1,6 +1,6 @@
 import fs from 'fs';
 
-import { boardingPasses } from "./boarding-passes";
+import { boardingPasses, findMissing } from "./boarding-passes";
 import { validatePassports } from "./passport";
 import { passwords } from "./passwords";
 import { report } from './report';
@@ -52,8 +52,9 @@ console.log(validPassports)
 
 const seats = readToArray('./inputs/day-five.txt')
     .map(boardingPasses)
-    .map(([column, row, id]) => id);
-console.log(Math.max(...seats));
+const seatIds = seats.map(([column, row, id]) => id);
+console.log(Math.max(...seatIds));
+console.log(findMissing(seats));
 
 
 

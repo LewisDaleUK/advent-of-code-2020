@@ -1,1 +1,1 @@
-export {boardingPasses} from "./boarding-passes";
+export {boardingPasses, findMissing} from "./boarding-passes";
