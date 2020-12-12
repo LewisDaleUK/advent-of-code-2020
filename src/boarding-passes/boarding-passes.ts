@@ -30,18 +30,13 @@ const findSeat = (seats : Seat[], id : number) : Seat|void => seats.filter(s => 
 
 export const findMissing = (seats : Seat[]) : number => {
     const seatIds = getSeatIds(seats);
+    const min = Math.min(...seatIds);
+    const max = Math.max(...seatIds);
 
-    for (let i = Math.min(...seatIds); i < Math.max(...seatIds); i++) {
-        const seat = findSeat(seats, i);
+    const range = Array.from(Array(max-min)).map((_, i) => min + i);
+    const validIds = range
+        .filter(x => !seatIds.includes(x))
+        .filter(x => findSeat(seats, x-1) && findSeat(seats, x+1));
 
-        if (!seat) {
-            const above = findSeat(seats, i+1);
-            const below = findSeat(seats, i-1);
-
-            if (above && below) {
-                return i;
-            }
-        }
-    }
-    return 0;
+    return validIds[0] || 0;
 }
