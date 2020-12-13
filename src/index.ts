@@ -6,7 +6,7 @@ import { validatePassports } from "./passport";
 import { passwords } from "./passwords";
 import { report } from './report';
 import { toboggan } from "./toboggan";
-import {bagsContaining} from "./luggage";
+import {bagsContaining, totalBags} from "./luggage";
 
 const readToArray = (fn : string) : Array<string> =>
     fs.readFileSync(fn)
@@ -61,4 +61,5 @@ console.log(findMissing(seats));
 console.log(customs.totalAnswers(readToArray('./inputs/day-six.txt')))
 
 console.log(bagsContaining(readToArray('./inputs/day-seven.txt'), 'shiny gold'));
+console.log(totalBags(readToArray('./inputs/day-seven.txt'), 'shiny gold'));
 

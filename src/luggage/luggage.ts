@@ -8,6 +8,12 @@ export const bagsContaining = (rules : string[], term : string) : number =>
         .filter((bag, _, rules) => bagContains(bag, term, rules))
         .length;
 
+export const totalBags = (rules : string[], term : string) : number => {
+    const bags = collectBags(rules);
+    const bag = bags.find(b => b[0] === term);
+    return bag === undefined ? 0 : countContents(bag, bags);
+}
+
 const collectBags = (rules : string[]) : Bag[] =>
     rules.map(ruleToBag)
 
@@ -41,3 +47,17 @@ const bagContains = (bag : Bag, searchBag : string, rules : Bag[]) : boolean => 
         return found !== undefined && bagContains(found, searchBag, rules)
     }).length !== 0;
 };
+
+const countContents = (bag : Bag, rules : Bag[]) : number => {
+    if (!bag[1].length) {
+        return 0;
+    }
+
+    return bag[1].reduce((acc, [count, bagName]) => {
+        const found = rules.find(a => a[0] === bagName);
+        if (found === undefined) {
+            return acc;
+        }
+        return acc + count + (count * countContents(found, rules));
+    }, 0);
+}

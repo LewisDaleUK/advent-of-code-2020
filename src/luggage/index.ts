@@ -1,1 +1,1 @@
-export {bagsContaining} from "./luggage";
+export {bagsContaining, totalBags} from "./luggage";
